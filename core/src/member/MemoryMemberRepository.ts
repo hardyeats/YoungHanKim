@@ -5,9 +5,9 @@ export class MemoryMemberRepository implements IMemberRepository {
   private static store: Record<number, Member> = {};
 
   save(member: Member): void {
-    MemoryMemberRepository.store;
+    MemoryMemberRepository.store[member.id] = member;
   }
   findById(id: number): Member {
-    throw new Error("Method not implemented.");
+    return MemoryMemberRepository.store[id];
   }
 }

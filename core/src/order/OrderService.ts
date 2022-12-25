@@ -1,5 +1,6 @@
 import { DiscountPolicy } from "../discount/DiscountPolicy";
 import { FixedAmountDiscountPolicy } from "../discount/FixedAmountDiscountPolicy";
+import { FixedRateDiscountPolicy } from "../discount/FixedRateDiscountPolicy";
 import { IMemberRepository } from "../member/IMemberRepository";
 import { MemoryMemberRepository } from "../member/MemoryMemberRepository";
 import { IOrderService } from "./IOrderService";
@@ -8,8 +9,10 @@ import { Order } from "./Order";
 export class OrderService implements IOrderService {
   private readonly memberRepository: IMemberRepository =
     new MemoryMemberRepository();
+  // private readonly discountPolicy: DiscountPolicy =
+  //   new FixedAmountDiscountPolicy();
   private readonly discountPolicy: DiscountPolicy =
-    new FixedAmountDiscountPolicy();
+    new FixedRateDiscountPolicy();
 
   createOrder(memberId: number, itemName: string, itemPrice: number): Order {
     const member = this.memberRepository.findById(memberId);

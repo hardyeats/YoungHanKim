@@ -1,8 +1,8 @@
-import { IMemberService } from "./member/IMemberService";
+import { AppConfig } from "./AppConfig";
 import { Grade, Member } from "./member/Member";
-import { MemberService } from "./member/MemberService";
 
-const memberService: IMemberService = new MemberService();
+const appConfig = new AppConfig();
+const memberService = appConfig.memberService();
 const member = new Member(1, "memberA", Grade.VIP);
 memberService.join(member);
 const findedMember = memberService.findMember(1);

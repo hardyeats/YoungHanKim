@@ -7,12 +7,12 @@ import { IOrderService } from "./IOrderService";
 import { Order } from "./Order";
 
 export class OrderService implements IOrderService {
-  private readonly memberRepository: IMemberRepository =
-    new MemoryMemberRepository();
   // private readonly discountPolicy: DiscountPolicy =
   //   new FixedAmountDiscountPolicy();
-  private readonly discountPolicy: DiscountPolicy =
-    new FixedRateDiscountPolicy();
+  constructor(
+    private readonly memberRepository: IMemberRepository,
+    private readonly discountPolicy: DiscountPolicy
+  ) {}
 
   createOrder(memberId: number, itemName: string, itemPrice: number): Order {
     const member = this.memberRepository.findById(memberId);

@@ -4,7 +4,7 @@ import { Member } from "./Member";
 import { MemoryMemberRepository } from "./MemoryMemberRepository";
 
 export class MemberService implements IMemberService {
-  private memberRepository: IMemberRepository = new MemoryMemberRepository();
+  constructor(private memberRepository: IMemberRepository) {}
 
   join(member: Member): void {
     this.memberRepository.save(member);

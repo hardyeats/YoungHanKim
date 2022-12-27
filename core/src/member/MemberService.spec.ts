@@ -1,10 +1,11 @@
 import { describe, expect, it } from "@jest/globals";
+import { AppConfig } from "../AppConfig";
 import { IMemberService } from "./IMemberService";
 import { Grade, Member } from "./Member";
 import { MemberService } from "./MemberService";
 
 describe("MemberService", () => {
-  const memberService: IMemberService = new MemberService();
+  const memberService: IMemberService = new AppConfig().memberService();
 
   it("should return same member with same member id", () => {
     //given

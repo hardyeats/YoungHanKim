@@ -1,5 +1,6 @@
 import { DiscountPolicy } from "./discount/DiscountPolicy";
 import { FixedAmountDiscountPolicy } from "./discount/FixedAmountDiscountPolicy";
+import { FixedRateDiscountPolicy } from "./discount/FixedRateDiscountPolicy";
 import { IMemberRepository } from "./member/IMemberRepository";
 import { IMemberService } from "./member/IMemberService";
 import { MemberService } from "./member/MemberService";
@@ -18,6 +19,7 @@ export class AppConfig {
     return new MemoryMemberRepository();
   }
   discountPolicy(): DiscountPolicy {
-    return new FixedAmountDiscountPolicy();
+    return new FixedRateDiscountPolicy();
+    // return new FixedAmountDiscountPolicy();
   }
 }
